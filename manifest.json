@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Easy Stickers",
+  "version": "1.0.0",
+  "description": "Extension to save and access your favorite stickers, ready to share quickly.",
+  "icons": {
+    "16": "assets/icon16.png",
+    "32": "assets/icon32.png",
+    "48": "assets/icon48.png",
+    "128": "assets/icon128.png"
+  },
+  "host_permissions": [
+    "*://*/*"
+  ],
+  "permissions": [
+    "contextMenus"
+  ],
+  "action": {
+    "default_popup": "index.html"
+  },
+  "background": {
+    "service_worker": "js/sw.js"
+  }
+}

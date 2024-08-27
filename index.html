@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easy Stickers</title>
+    <link rel="stylesheet" href="css/toast.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+  <div class="loader">
+    <img src="assets/fire-flame.gif" alt="fire-flame">
+    Easy Stickers
+  </div>
+
+  <toast-notifications></toast-notifications>
+
+  <div class="easy-stickers-drop-zone">
+    Drop Files
+    <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 544 472"><path fill="currentColor" d="M528 67q0-28-18.5-46T464 3H80Q53 3 34.5 21T16 67v245l-9 6l9 11v36q0 28 18.5 46T80 429h384q27 0 45.5-18t18.5-46v-98l9-10l-9-9V67zm-43 298q0 22-21 22H80q-21 0-21-22v-32l128-91l134 89l24-36l-47-32l83-83l104 87v98zm0-151l-108-90l-118 118l-72-52l-128 92V67q0-22 21-22h384q21 0 21 22v147zM208 109q0 18-12.5 30.5T165 152q-17 0-29.5-12.5T123 109q0-17 12.5-29.5T165 67q18 0 30.5 12.5T208 109z"/></svg>
+  </div>
+
+  <main class="easy-stickers-main">
+
+    <div class="easy-stickers-empty">
+      <img src="assets/this-is-fine.gif" alt="fire-flame">
+      Drop your stickers here!
+    </div>
+
+    <section class="easy-stickers-section">
+      <label class="easy-stickers-label">Last used</label>
+      <div class="easy-stickers-grid" data-last-copied-stickers-grid></div>
+    </section>
+  
+    <section class="easy-stickers-section">
+      <label class="easy-stickers-label">All</label>
+      <div class="easy-stickers-grid" data-all-stickers-grid></div>
+    </section>
+  </main>
+
+  <footer class="easy-stickers-footer">
+    <div class="easy-stickers-footer-sizes">
+      <span class="easy-stickers-footer-sizes-label">Copy size</span>
+      <label class="easy-stickers-footer-size">
+        <input type="radio" name="size-image" value="150">
+        150px
+      </label>
+
+      <label class="easy-stickers-footer-size">
+        <input type="radio" name="size-image" value="175" checked>
+        175px
+      </label>
+
+      <label class="easy-stickers-footer-size">
+        <input type="radio" name="size-image" value="200">
+        200px
+      </label>
+
+    </div>
+
+    <label class="easy-stickers-add-image-button">
+      <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 1024 1024"><path fill="currentColor" d="M960 640H640v320q0 27-18.5 45.5T576 1024H448q-27 0-45.5-19T384 960V640H64q-27 0-45.5-19T0 576V448q0-27 18.5-45.5T64 384h320V64q0-27 18.5-45.5T448 0h128q27 0 45.5 18.5T640 64v320h320q27 0 45.5 18.5T1024 448v128q0 26-18.5 45T960 640z"/></svg>
+      Add image
+      <input type="file" id="fileInput" accept="image/*" multiple hidden>
+    </label>
+  </footer>
+
+  <script src="js/toast.js"></script>
+  <script src="js/indexedDB.js"></script>
+  <script src="js/index.js"></script>
+</body>
+</html>
