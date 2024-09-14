@@ -41,30 +41,36 @@
   <footer class="easy-stickers-footer">
     <div class="easy-stickers-footer-sizes">
       <span class="easy-stickers-footer-sizes-label">Copy size</span>
-      <label class="easy-stickers-footer-size">
+      <label class="easy-stickers-button easy-stickers-footer-size-button">
         <input type="radio" name="size-image" value="150">
         150px
       </label>
 
-      <label class="easy-stickers-footer-size">
+      <label class="easy-stickers-button easy-stickers-footer-size-button">
         <input type="radio" name="size-image" value="175" checked>
         175px
       </label>
 
-      <label class="easy-stickers-footer-size">
+      <label class="easy-stickers-button easy-stickers-footer-size-button">
         <input type="radio" name="size-image" value="200">
         200px
       </label>
-
     </div>
 
-    <label class="easy-stickers-add-image-button">
+    <button type="button" class="easy-stickers-button button-icon ml-auto easy-stickers-button-export" data-button-export>
+      <svg class="icon-download" xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 16 16"><path fill="currentColor" fill-rule="evenodd" d="M11.78 7.159a.75.75 0 0 0-1.06 0l-1.97 1.97V1.75a.75.75 0 0 0-1.5 0v7.379l-1.97-1.97a.75.75 0 0 0-1.06 1.06l3.25 3.25L8 12l.53-.53l3.25-3.25a.75.75 0 0 0 0-1.061ZM2.5 9.75a.75.75 0 0 0-1.5 0V13a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V9.75a.75.75 0 0 0-1.5 0V13a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V9.75Z" clip-rule="evenodd"/></svg>
+
+      <svg class="icon-loader" xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3a9 9 0 1 0 9 9"/></svg>
+    </button>
+
+    <label class="easy-stickers-button easy-stickers-add-image-button">
       <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 1024 1024"><path fill="currentColor" d="M960 640H640v320q0 27-18.5 45.5T576 1024H448q-27 0-45.5-19T384 960V640H64q-27 0-45.5-19T0 576V448q0-27 18.5-45.5T64 384h320V64q0-27 18.5-45.5T448 0h128q27 0 45.5 18.5T640 64v320h320q27 0 45.5 18.5T1024 448v128q0 26-18.5 45T960 640z"/></svg>
       Add image
       <input type="file" id="fileInput" accept="image/*" multiple hidden>
     </label>
   </footer>
 
+  <script src="js/jszip.min.js"></script>
   <script src="js/toast.js"></script>
   <script src="js/indexedDB.js"></script>
   <script src="js/index.js"></script>

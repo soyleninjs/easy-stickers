@@ -5,6 +5,7 @@ const htmlStringToNode = (htmlString) => new window.DOMParser().parseFromString(
 
 // Elments
 const toastNotifications = $("toast-notifications");
+const $buttonExport = $('[data-button-export]');
 const allStickersContainer = $("[data-all-stickers-grid]");
 const lastCopiedContainer = $("[data-last-copied-stickers-grid]");
 
@@ -90,6 +91,55 @@ const configCopySize = () => {
       localStorage.setItem("copy-size", $radio.value)
     })
   })
+}
+
+const exportStickersZip = () => {
+  const zip = new JSZip();
+  $buttonExport.classList.add("loading")
+
+  // Accede a los stickers almacenados en IndexedDB
+  getAllStickers().then(stickers => {
+    if (stickers.length === 0) {
+      window.alert('No hay stickers para exportar.');
+      return;
+    }
+
+    stickers.forEach((sticker, index) => {
+        const base64Data = sticker.content.split(',')[1]; // Elimina el encabezado 'data:image/*;base64,'
+        
+        // Detecta el tipo de imagen para agregar la extensión correcta
+        let extension = '';
+        if (sticker.content.startsWith('data:image/png')) {
+            extension = 'png';
+        } else if (sticker.content.startsWith('data:image/jpeg')) {
+            extension = 'jpg';
+        } else if (sticker.content.startsWith('data:image/webp')) {
+            extension = 'webp';
+        } else {
+            console.error('Formato de imagen no soportado:', sticker.content);
+            return;
+        }
+
+        // Agrega el archivo al zip
+        zip.file(`sticker-${index + 1}.${extension}`, base64Data, { base64: true });
+    });
+
+    // // Genera el archivo ZIP y permite descargarlo
+    zip.generateAsync({ type: "blob" })
+      .then(function (blob) {
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = "stickers.zip";
+        link.click();
+        toastNotifications.createToast("Zip generado correctamente", "success");
+      })
+      .catch(function (error) {
+        toastNotifications.createToast("Error al generar el ZIP", "error");
+      })
+      .finally(() => {
+        $buttonExport.classList.remove("loading")
+      })
+  });
 }
 
 // Renders
@@ -201,4 +251,6 @@ document.addEventListener("DOMContentLoaded", () => {
   configInputFile();
   configDragAndDrop();
   showStickers();
+
+  $buttonExport.addEventListener('click', exportStickersZip);
 });
